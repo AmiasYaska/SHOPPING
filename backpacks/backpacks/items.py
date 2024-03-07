@@ -12,6 +12,13 @@ class BackpacksItem(scrapy.Item):
     item_name = scrapy.Field(
         output_processor=TakeFirst()
     )
+
+    brand_name = scrapy.Field(
+        output_processor=TakeFirst()
+    )
+    image_url = scrapy.Field(
+        output_processor=TakeFirst()
+    )
     price = scrapy.Field(
         output_processor=TakeFirst()
     )

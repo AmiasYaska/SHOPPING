@@ -30,6 +30,8 @@ class BagsSpider(scrapy.Spider):
             bag_item = BackpacksItem()
 
             bag_item["item_name"] = product["item"]["product_description"]["title"]
+            bag_item["brand_name"] = product["item"]["primary_brand"]["name"]
+            bag_item["image_url"] = product["item"]["enrichment"]["images"]["primary_image_url"]
             bag_item["price"] = product["price"]["current_retail"]
 
             yield bag_item
