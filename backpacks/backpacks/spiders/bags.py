@@ -1,5 +1,6 @@
 import scrapy
 import json
+from ..items import BackpacksItem
 
 
 class BagsSpider(scrapy.Spider):
@@ -18,6 +19,15 @@ class BagsSpider(scrapy.Spider):
         products = data.get("data").get("search").get("products")
 
         for product in products:
-            item_name = product["item"]["product_description"]["title"]
-            price = product["price"]["current_retail"]
+
+            bag_item = BackpacksItem()
+
+            bag_item["item_name"] = product["item"]["product_description"]["title"]
+            bag_item["price"] = product["price"]["current_retail"]
+
+            # item_name = bag_item["item_name"]
+            # price = bag_item["price"]
+
+            # Yield the item instead of a dictionary
+            yield bag_item
 
