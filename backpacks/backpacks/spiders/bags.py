@@ -15,10 +15,9 @@ class BagsSpider(scrapy.Spider):
 
     def parse(self, response):
         data = json.loads(response.body)
-        searched_results = data.get("data").get("search").get("products")
+        products = data.get("data").get("search").get("products")
 
-        items = [result["item"]["product_description"]["title"] for result in searched_results]
+        for product in products:
+            item_name = product["item"]["product_description"]["title"]
+            price = product["price"]["current_retail"]
 
-        print(items)
-
-        # print(searched_results)
