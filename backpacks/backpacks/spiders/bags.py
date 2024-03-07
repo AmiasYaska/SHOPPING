@@ -7,7 +7,7 @@ class BagsSpider(scrapy.Spider):
     name = "bags"
     allowed_domains = ["target.com"]
 
-    MAX_PAGES = 5
+    MAX_PAGES = 50
 
     def start_requests(self):
         for page_num in range(self.MAX_PAGES):
